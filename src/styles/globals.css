@@ -1,0 +1,641 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --background: #fef7f7;
+  --foreground: #1a1717;
+  --card: #ffffff;
+  --card-foreground: #1a1717;
+  --popover: #ffffff;
+  --popover-foreground: #1a1717;
+  --primary: #dc2626;
+  --primary-foreground: #ffffff;
+  --secondary: #fee2e2;
+  --secondary-foreground: #991b1b;
+  --muted: #fef2f2;
+  --muted-foreground: #6b5b5b;
+  --accent: #fecaca;
+  --accent-foreground: #7f1d1d;
+  --destructive: #b91c1c;
+  --destructive-foreground: #ffffff;
+  --border: rgba(220, 38, 38, 0.2);
+  --input: transparent;
+  --input-background: #fef2f2;
+  --switch-background: #fecaca;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #dc2626;
+  --chart-1: #dc2626;
+  --chart-2: #f97316;
+  --chart-3: #eab308;
+  --chart-4: #22c55e;
+  --chart-5: #3b82f6;
+  --radius: 0.625rem;
+  --sidebar: #fef7f7;
+  --sidebar-foreground: #1a1717;
+  --sidebar-primary: #dc2626;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #fef2f2;
+  --sidebar-accent-foreground: #7f1d1d;
+  --sidebar-border: rgba(220, 38, 38, 0.2);
+  --sidebar-ring: #dc2626;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
+  --popover: #1a1a1a;
+  --popover-foreground: #ffffff;
+  --primary: #ff3333;
+  --primary-foreground: #ffffff;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #ff9999;
+  --muted: #2a2a2a;
+  --muted-foreground: #cccccc;
+  --accent: #331111;
+  --accent-foreground: #ff6666;
+  --destructive: #ff1111;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 51, 51, 0.4);
+  --input: #2a2a2a;
+  --ring: #ff3333;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: #ff3333;
+  --chart-2: #ff9933;
+  --chart-3: #ffcc33;
+  --chart-4: #33ff66;
+  --chart-5: #3366ff;
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #ff3333;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2a2a2a;
+  --sidebar-accent-foreground: #ff6666;
+  --sidebar-border: rgba(255, 51, 51, 0.4);
+  --sidebar-ring: #ff3333;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Solución para errores de CORS en hojas de estilo externas (Leaflet, etc) */
+/* Estas clases ayudan a prevenir errores de acceso a cssRules */
+@layer base {
+  /* Asegurar que las hojas de estilo externas no causen errores CORS */
+  :root {
+    /* Variables para Leaflet y otras librerías externas */
+    --leaflet-tile-size: 256px;
+    --leaflet-attribution-bg: var(--muted);
+    --leaflet-control-bg: var(--card);
+  }
+
+  /* Estilos básicos de Leaflet inline para evitar dependencia de CSS externo */
+  .leaflet-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .leaflet-marker-icon,
+  .leaflet-marker-shadow,
+  .leaflet-tile,
+  .leaflet-image-layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .leaflet-control {
+    position: relative;
+    z-index: 800;
+    pointer-events: visiblePainted;
+    pointer-events: auto;
+  }
+
+  .leaflet-top,
+  .leaflet-bottom {
+    position: absolute;
+    z-index: 1000;
+    pointer-events: none;
+  }
+
+  .leaflet-top {
+    top: 0;
+  }
+
+  .leaflet-right {
+    right: 0;
+  }
+
+  .leaflet-bottom {
+    bottom: 0;
+  }
+
+  .leaflet-left {
+    left: 0;
+  }
+
+  .leaflet-fade-anim .leaflet-tile {
+    will-change: opacity;
+  }
+
+  .leaflet-fade-anim .leaflet-popup {
+    opacity: 0;
+    transition: opacity 0.2s linear;
+  }
+
+  .leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
+    opacity: 1;
+  }
+
+  .leaflet-zoom-animated {
+    transform-origin: 0 0;
+  }
+}
+
+/* Estilos para marcadores de Leaflet personalizados */
+.custom-incident-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.user-location-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Mejorar el aspecto de los popups de Leaflet */
+.leaflet-popup-content-wrapper {
+  border-radius: var(--radius) !important;
+  border: 1px solid var(--border) !important;
+  background: var(--popover) !important;
+  color: var(--popover-foreground) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--popover) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.leaflet-popup-close-button {
+  color: var(--muted-foreground) !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: var(--foreground) !important;
+}
+
+/* Mejorar controles de Leaflet */
+.leaflet-control-attribution {
+  background: var(--muted) !important;
+  color: var(--muted-foreground) !important;
+  font-size: 11px !important;
+  border-radius: var(--radius) !important;
+}
+
+.leaflet-control-attribution a {
+  color: var(--primary) !important;
+}
+
+/* Marcadores con animación personalizada */
+.custom-incident-marker .animate-ping {
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Estilos personalizados para scrollbar */
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: var(--radius);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius);
+  border: 1px solid var(--muted);
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+  transform: scale(1.1);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--primary);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--muted);
+  border-radius: var(--radius);
+}
+
+/* Ocultar scrollbars completamente en modales para mantener bordes limpios */
+[data-radix-scroll-area-viewport],
+.modal-scrollbar,
+[role="dialog"],
+[data-state="open"],
+[data-radix-dialog-content] {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+[data-radix-scroll-area-viewport] ::-webkit-scrollbar,
+.modal-scrollbar ::-webkit-scrollbar,
+[role="dialog"] ::-webkit-scrollbar,
+[data-state="open"] ::-webkit-scrollbar,
+[data-radix-dialog-content] ::-webkit-scrollbar {
+  display: none; /* Safari y Chrome */
+}
+
+/* Selector más específico para modales con clase personalizada */
+.dialog-content-scroll {
+  overflow-y: auto;
+  max-height: calc(90vh - 2rem);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dialog-content-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--muted);
+}
+
+/* Scrollbar más delgada para móviles */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+/* Efecto de fade para scroll areas */
+.scroll-fade {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 2%,
+    black 98%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 2%,
+    black 98%,
+    transparent 100%
+  );
+}
+
+/* Scrollbar ultra-integrada para contenedores específicos */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: calc(var(--radius) - 4px);
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: calc(var(--radius) - 4px);
+  border: none;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+.scrollbar-thin::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Scrollbar completamente oculta */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Scrollbar oculta para modales - mantiene funcionalidad sin aspecto visual */
+.modal-content {
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Clase específica para formularios de modal */
+.modal-form-content {
+  overflow-y: auto;
+  max-height: calc(85vh - 8rem);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modal-form-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Clase para contenido de modal con bordes perfectos */
+.modal-rounded-content {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.modal-rounded-content > * {
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modal-rounded-content ::-webkit-scrollbar {
+  display: none;
+}
+
+/* Clase adicional para cualquier modal que necesite scroll oculto */
+.modal-hidden-scroll {
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modal-hidden-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Específicamente para componentes Dialog de shadcn */
+.dialog-content-hidden-scroll {
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dialog-content-hidden-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Selectores más amplios para asegurar que todos los modales oculten scrollbars */
+/* Radix Dialog Content */
+[data-radix-dialog-overlay] [data-radix-dialog-content],
+[data-radix-dialog-overlay] [data-radix-dialog-content] *,
+/* Radix Sheet Content */
+[data-radix-sheet-overlay] [data-radix-sheet-content],
+[data-radix-sheet-overlay] [data-radix-sheet-content] *,
+/* Elementos con roles de dialog */
+[role="dialog"],
+[role="dialog"] *,
+[role="alertdialog"],
+[role="alertdialog"] *,
+/* Estados de apertura de Radix */
+[data-state="open"],
+[data-state="open"] * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+[data-radix-dialog-overlay] [data-radix-dialog-content]::-webkit-scrollbar,
+[data-radix-dialog-overlay] [data-radix-dialog-content] *::-webkit-scrollbar,
+[data-radix-sheet-overlay] [data-radix-sheet-content]::-webkit-scrollbar,
+[data-radix-sheet-overlay] [data-radix-sheet-content] *::-webkit-scrollbar,
+[role="dialog"]::-webkit-scrollbar,
+[role="dialog"] *::-webkit-scrollbar,
+[role="alertdialog"]::-webkit-scrollbar,
+[role="alertdialog"] *::-webkit-scrollbar,
+[data-state="open"]::-webkit-scrollbar,
+[data-state="open"] *::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Clase universal para ocultar scrollbars */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==================================================================
+   ESTILOS PARA LEAFLET - CONTROL DE CURSOR
+   ================================================================== */
+
+/* Por defecto, el mapa NO tiene cursor grab */
+.leaflet-container {
+  cursor: default;
+}
+
+/* NO mostrar cursor grab cuando el dragging está habilitado */
+.leaflet-container.leaflet-grab {
+  cursor: default;
+}
+
+/* Solo mostrar grabbing cuando se está arrastrando activamente */
+.leaflet-container.leaflet-dragging {
+  cursor: grabbing !important;
+}
+
+/* Cuando está en modo dibujo activo */
+.leaflet-container.drawing-active,
+.leaflet-container.drawing-active *,
+.leaflet-container.drawing-active .leaflet-pane,
+.leaflet-container.drawing-active .leaflet-pane *,
+.leaflet-container.drawing-active .leaflet-tile-pane,
+.leaflet-container.drawing-active .leaflet-tile {
+  cursor: crosshair !important;
+}
+
+/* ==================================================================
+   MODO DIBUJO ACTIVADO
+   ================================================================== */
+
+/* Cuando el body tiene la clase leaflet-drawing, FORZAR crosshair en todo */
+body.leaflet-drawing .leaflet-container,
+body.leaflet-drawing .leaflet-container *,
+body.leaflet-drawing .leaflet-pane,
+body.leaflet-drawing .leaflet-pane *,
+body.leaflet-drawing .leaflet-tile-pane,
+body.leaflet-drawing .leaflet-tile-pane *,
+body.leaflet-drawing .leaflet-overlay-pane,
+body.leaflet-drawing .leaflet-overlay-pane *,
+body.leaflet-drawing .leaflet-marker-pane,
+body.leaflet-drawing .leaflet-marker-pane *,
+body.leaflet-drawing .leaflet-tile,
+body.leaflet-drawing .leaflet-layer {
+  cursor: crosshair !important;
+}
+
+/* Clase directa en el contenedor */
+.leaflet-container.leaflet-crosshair,
+.leaflet-container.leaflet-crosshair *,
+.leaflet-container.leaflet-crosshair .leaflet-pane,
+.leaflet-container.leaflet-crosshair .leaflet-pane *,
+.leaflet-container.leaflet-crosshair .leaflet-tile-pane,
+.leaflet-container.leaflet-crosshair .leaflet-tile {
+  cursor: crosshair !important;
+}
+
+/* Tooltip y elementos de dibujo */
+.leaflet-draw-tooltip {
+  cursor: crosshair !important;
+}
+
+.leaflet-mouse-marker {
+  cursor: crosshair !important;
+}
+
+/* ==================================================================
+   CONTROLES Y BOTONES
+   ================================================================== */
+
+/* Los controles y botones siempre tienen cursor pointer */
+.leaflet-draw-toolbar,
+.leaflet-draw-toolbar *,
+.leaflet-draw-actions,
+.leaflet-draw-actions a,
+.leaflet-control-zoom,
+.leaflet-control-zoom a,
+.leaflet-bar,
+.leaflet-bar a {
+  cursor: pointer !important;
+}
